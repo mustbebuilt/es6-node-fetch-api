@@ -16,7 +16,6 @@
         <section>
           <div>
             <p>Hosted on Node/Express</p>
-            <p><a href="insert.html">Add Film</a></p>
           </div>
           <ul id="dom"></ul>
         </section>
@@ -25,12 +24,7 @@
   </body>
   <script>
     (function () {
-      // MongoDb
-      // let api = "https://nodeshufilms.azurewebsites.net/api/films";
-      // .net
-      //let api = "http://movieapishu.azurewebsites.net/api/films";
-      // PHP
-      let api = "https://www.mustbebuilt.co.uk/SHU/films-api/api.php";
+      let api = "http://localhost:3000/api";
       let displayList = [];
       async function getData() {
         const response = await fetch(api);
@@ -45,9 +39,8 @@
 
           myJson.forEach((obj) => {
             console.log(obj);
-            // change from obj.filmID to obj._id for MongoDb
             displayList.push(
-              `<li><a href="details.html?filmID=${obj.filmID}">${obj.filmTitle}</a></li>`
+              `<li>${obj.toc_Name}</li>`
             );
           });
           document.getElementById("dom").innerHTML = displayList.join("");

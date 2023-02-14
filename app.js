@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 app.get("/api", async function(req, resp){
 
-const url = `https://traindata-stag-api.railsmart.io/api/trains/tiploc/CREWEMD,WLSDEUT,LOWFRMT,WLSDRMT,CARLILE,MOSEUPY,STAFFRD,DONCIGB,THMSLGB,FLXSNGB/2023-02-05 00:00:00/2023-02-06 23:59:59`;
+const url = `https://traindata-stag-api.railsmart.io/api/trains/tiploc/CREWEMD,WLSDEUT,LOWFRMT,WLSDRMT,CARLILE,MOSEUPY,STAFFRD,DONCIGB,THMSLGB,FLXSNGB/2023-02-14 00:00:00/2023-02-15 23:59:59`;
 
 const options = {
 	method: 'GET',
@@ -24,19 +24,9 @@ const options = {
 	}
 };
 
-// promise syntax
-fetch(url, options)
-	.then(res => res.json())
-	.then(json => console.log(json))
-	.catch(err => console.error('error:' + err));
-// async await syntax
-try {
-	const res = await fetch(url, options);
-	const json = await res.json();
-	console.log(json);
-} catch (err) {
-	console.log(err);
-}
+const apiResp = await fetch(url, options);
+const json = await apiResp.json();
+resp.json(json)
 
 })
 
