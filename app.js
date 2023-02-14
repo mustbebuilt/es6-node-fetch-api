@@ -1,13 +1,44 @@
-const { ok } = require("assert");
-const express = require("express");
-const path = require("path");
+import express, { json } from 'express';
+import fetch from 'node-fetch';
+
 
 const app = express();
 
+
+
 app.use(express.static("./public"));
 
-app.listen(3000);
+app.use(json())
 
-console.log("Express on 3000");
+const PORT = process.env.PORT || 3000;
 
-module.exports = app;
+app.get("/api", async function(req, resp){
+
+const url = `https://famous-quotes4.p.rapidapi.com/random?category=all&count=2`;
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Host': 'famous-quotes4.p.rapidapi.com',
+		'X-RapidAPI-Key': 'your-rapidapi-key'
+	}
+};
+
+// promise syntax
+fetch(url, options)
+	.then(res => res.json())
+	.then(json => console.log(json))
+	.catch(err => console.error('error:' + err));
+// async await syntax
+try {
+	const res = await fetch(url, options);
+	const json = await res.json();
+	console.log(json);
+} catch (err) {
+	console.log(err);
+}
+
+})
+
+
+app.listen(PORT, () => console.log(`App listening at port ${PORT}`));
