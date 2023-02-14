@@ -14,13 +14,13 @@ const PORT = process.env.PORT || 3000;
 
 app.get("/api", async function(req, resp){
 
-const url = `https://traindata-stag-api.railsmart.io/api/trains/tiploc/CREWEMD,WLSDEUT,LOWFRMT,WLSDRMT,CARLILE,MOSEUPY,STAFFRD,DONCIGB,THMSLGB,FLXSNGB/2023-02-14 00:00:00/2023-02-15 23:59:59`;
+const url = `xxxxx`;
 
 const options = {
 	method: 'GET',
 	headers: {
-		'X-ApiVersion': 1,
-		'X-ApiKey': 'AA26F453-D34D-4EFC-9DC8-F63625B67F4A'
+		'X-ApiVersion': zzzz,
+		'X-ApiKey': 'yyyy'
 	}
 };
 
