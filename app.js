@@ -24,9 +24,11 @@ const options = {
 	}
 };
 	
-	app.get("/test", (req,resp) =>{
-	resp.send('hi')	
-	}
+app.get('/test', function (req, res) {
+  console.dir(res.headersSent) // false
+  res.send('OK')
+  console.dir(res.headersSent) // true
+})
 
 const apiResp = await fetch(url, options);
 const json = await apiResp.json();
