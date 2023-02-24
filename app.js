@@ -23,6 +23,10 @@ const options = {
 		'X-ApiKey': 'yyyy'
 	}
 };
+	
+	app.get("/test", (req,resp) =>{
+	resp.send(process.env.DATABASE_NAME)	
+	}
 
 const apiResp = await fetch(url, options);
 const json = await apiResp.json();
