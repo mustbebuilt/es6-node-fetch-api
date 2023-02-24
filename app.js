@@ -25,7 +25,7 @@ const options = {
 };
 	
 	app.get("/test", (req,resp) =>{
-	resp.send(process.env.DATABASE_NAME)	
+	resp.send('hi')	
 	}
 
 const apiResp = await fetch(url, options);
