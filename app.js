@@ -1,40 +1,28 @@
-import express, { json } from 'express';
-import fetch from 'node-fetch';
-
+import express, { json } from "express";
+import fetch from "node-fetch";
 
 const app = express();
 
-
-
 app.use(express.static("./public"));
 
-app.use(json())
+app.use(json());
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/api", async function(req, resp){
+app.get("/api", async function (req, resp) {
+  const url = `xxxxx`;
 
-const url = `xxxxx`;
+  const options = {
+    method: "GET",
+    headers: {
+      "X-ApiVersion": zzzz,
+      "X-ApiKey": "yyyy",
+    },
+  };
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-ApiVersion': zzzz,
-		'X-ApiKey': 'yyyy'
-	}
-};
-	
-app.get('/test', function (req, res) {
-  console.dir(res.headersSent) // false
-  res.send('OK')
-  console.dir(res.headersSent) // true
-})
-
-const apiResp = await fetch(url, options);
-const json = await apiResp.json();
-resp.json(json)
-
-})
-
+  const apiResp = await fetch(url, options);
+  const json = await apiResp.json();
+  resp.json(json);
+});
 
 app.listen(PORT, () => console.log(`App listening at port ${PORT}`));
